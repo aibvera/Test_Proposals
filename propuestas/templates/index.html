@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<script type="text/javascript" src="{% static 'js/proposals.js' %}"></script>
+
+<div class="index_wrapper">
+
+<div class="content_wrapper">
+    <div class="header_wrapper">
+        <h3>Tabla de propuestas registradas</h3>
+    </div>
+    <div class="proposals_wrapper" id="proposals">
+        <p id="ejemplo"></p>
+    </div>
+</div>
+
+</div>
+
+{% endblock %}

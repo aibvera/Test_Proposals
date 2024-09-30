@@ -1,0 +1,38 @@
+<DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Propuestas</title>
+</head>
+<body>
+
+    <!-- Bloque de navegación para todas las páginas -->
+    <div class="navbar_wrapper">
+        <div class="buttons_wrapper">
+            <a href="{% url 'index' %}">
+                <button class="nav_button">Propuestas</button>
+            </a>
+            <a href="{% url 'new' %}">
+                <button class="nav_button">Nueva propuesta</button>
+            </a>
+            <a href="{% url 'edit' %}">
+                <button class="nav_button">Editar propuesta</button>
+            </a>
+        </div>
+        <div class="title_wrapper">
+            <h1>Propuestas de innovación</h1>
+        </div>
+        <div class="logo_wrapper">
+            <img src="{% static 'imgs/srk.png' %}" class="logo">
+        </div>
+    </div>
+
+    {% block content %}
+    <!-- Contenido de la página -->
+    {% endblock %}
+
+</body>
+</html>

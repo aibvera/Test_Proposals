@@ -1,0 +1,95 @@
+/* Generales */
+
+body {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+h1, h3 {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+/* Nav bar */
+
+.navbar_wrapper {
+    background: #F27222;
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons_wrapper {
+    height: 100%;
+    width: 40%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.nav_button {
+    height: 80%;
+}
+
+.title_wrapper {
+    height: 100%;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo_wrapper {
+    height: 100%;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo {
+    width: 80%;
+}
+
+/* Index */
+
+.index_wrapper {
+    width: 100vw;
+    height: 90vh;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content_wrapper {
+    width: 98%;
+    height: 95%;
+    border: 2px solid gray;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    padding: 0;
+    margin: 0;
+}
+
+.header_wrapper {
+    height: 7%;
+    padding: 0;
+    margin: 0;
+    margin-left: 5px;
+    border: 0;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.proposals_wrapper {
+    background: #D9D9D9;
+    height: 93%;
+}
