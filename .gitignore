@@ -1,4 +1,1 @@
 venv/
-
-# add .env file to .gitignore
-echo "venv/" >> .gitignore
