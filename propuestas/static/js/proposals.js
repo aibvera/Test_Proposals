@@ -34,7 +34,9 @@ const propuestas_1 = async() => {
 
         $("div#wrapper").Grid({
             search: true,
-            pagination: true,
+            pagination: {
+                limit: 8
+            },
             sort: true,
             columns: head,
             data: valores_rec,
@@ -42,7 +44,13 @@ const propuestas_1 = async() => {
                 th:{
                     color:'black'
                 },
-            }
+            },
+            language:{
+                'search':{
+                    'placeholder':'🔍 Busca tu proyecto xd...',
+                }
+            },
+            width: '99%',
         });
 
         // Fin del código
