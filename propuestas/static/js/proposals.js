@@ -47,7 +47,7 @@ const propuestas_1 = async() => {
             },
             language:{
                 'search':{
-                    'placeholder':'🔍 Busca tu proyecto xd...',
+                    'placeholder':'🔍 Busca lo que quieras...',
                 }
             },
             width: '99%',
