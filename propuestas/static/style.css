@@ -104,12 +104,11 @@ h1, h3 {
 }
 
 .proposals_wrapper {
-    /*background: #D9D9D9;*/
     height: 93%;
     margin: 10px;
 }
 
-/* Tabla Index */
+/* Tabla de propuestas */
 
 table{
     width: 100%;
