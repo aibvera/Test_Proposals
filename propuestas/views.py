@@ -24,6 +24,22 @@ def get_proposals(request):
         data = {'message': 'Not Found'}
     return JsonResponse(data)
 
+def get_AreaChoices(request):
+    choices = list(Propuesta.AreaChoises.choices)
+    if len(choices) > 0:
+        data = {'message': 'Success', 'opciones': choices}
+    else:
+        data = {'message': 'Not Found'}
+    return JsonResponse(data)
+
+def get_CategoriaChoices(request):
+    choices = list(Propuesta.CategoriaChoices.choices)
+    if len(choices) > 0:
+        data = {'message': 'Success', 'opciones': choices}
+    else:
+        data = {'message': 'Not Found'}
+    return JsonResponse(data)
+
 # Funciones de recepción de jsons desde el cliente #
 
 def submit(request):
@@ -33,7 +49,6 @@ def submit(request):
         try:
             data = json.loads(request.body)
         except json.JSONDecodeError:
-            print('Json inv')
             return JsonResponse({'error': 'JSON inválido'}, status=400)
 
         # Extraer valores del json:
@@ -49,13 +64,10 @@ def submit(request):
 
         # Verificar que los valores no sean None
         if not area or not cate or not proy or not enca or not corr or not desc:
-            print('campos')
             return JsonResponse({'error': 'Campos faltantes o incorrectos'}, status=400)
 
         # Añadir registro:
         Propuesta.objects.create(Id_Propuesta=id, Area=area, Categoria=cate, Proyecto=proy, Encargado=enca, Correo=corr, Descripcion=desc)
-        print('TODO BN')
         return JsonResponse({'status': 'Succes'})
 
-    print('ERRORRRR')
     return JsonResponse({'status': 'Error'})

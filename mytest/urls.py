@@ -22,6 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('proposals/', views.get_proposals, name='proposals'),
+    path('areachoices/', views.get_AreaChoices, name='areachoices'),
+    path('catechoices/', views.get_CategoriaChoices, name='catechoices'),
     path('new/', views.new, name='new'),
     path('new/submit', views.submit, name='submit'),
     path('edit/', views.edit, name='edit'),
