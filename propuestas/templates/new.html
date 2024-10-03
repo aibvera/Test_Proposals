@@ -15,12 +15,12 @@
                 <div class="up_form">
                     <div class="left_area_form">
                         <label for="area">Area</label>
-                        <select id="area" name="area" required>
+                        <select class="select-css" id="area" name="area" required>
                             <option>GR</option>
                             <option>MI</option>
                         </select>
-                        <label for="categ">Categoría:</label>
-                        <select id="categ" name="categ" required>
+                        <label for="categ">Categoría</label>
+                        <select class="select-css" id="categ" name="categ" required>
                             <option>SCR</option>
                             <option>AUT</option>
                             <option>LIB</option>
@@ -30,19 +30,25 @@
                         </select>
                     </div>
                     <div class="right_area_form">
-                        <label for="proy">Proyecto:</label>
-                        <input type="text" id="proy" name="proy" required>
-                        <label for="desc">Descripción:</label>
-                        <input type="text" id="desc" name="desc" required>
+                        <label for="proy">Nombre del Proyecto</label>
+                        <input class="input-css" type="text" id="proy" name="proy" required>
+                        <div class="bottom_form">
+                            <div class="input-enca">
+                                <label for="enca">Encargado</label>
+                                <input class="input-css" type="text" id="enca" name="enca" required>
+                            </div>
+                            <div class="input-corr">
+                                <label for="corr">Correo</label>
+                                <input class="input-css" type="text" id="corr" name="corr" required>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div class="input-desc">
+                    <label for="desc">Descripción:</label>
+                    <input class="input-css" type="text" id="desc" name="desc" required>
+                </div>
                 
-                <label for="enca">Encargado:</label>
-                <input type="text" id="enca" name="enca" required>
-
-                <label for="corr">Correo:</label>
-                <input type="text" id="corr" name="corr" required>
-
                 <input type="button" id="submit" value="Guardar">
             </form>
         </div>
