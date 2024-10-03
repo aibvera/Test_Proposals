@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
+{% load static %}
+<script type="text/javascript" src="{% static 'js/forms.js' %}"></script>
 
 <div class="index_wrapper">
 
@@ -9,13 +11,23 @@
         </div>
         <div class="proposals_wrapper" id="proposals" style="overflow-x: auto;">
             <!-- Contenido -->
-            <form class="registroForm" id="registroForm">
+            <form class="registroForm" id="registroForm" action="." method="POST">{% csrf_token %}
                 <div class="up_form">
                     <div class="left_area_form">
                         <label for="area">Area</label>
-                        <select id="area" name="area" required></select>
+                        <select id="area" name="area" required>
+                            <option>GR</option>
+                            <option>MI</option>
+                        </select>
                         <label for="categ">Categoría:</label>
-                        <select id="categ" name="categ" required></select>
+                        <select id="categ" name="categ" required>
+                            <option>SCR</option>
+                            <option>AUT</option>
+                            <option>LIB</option>
+                            <option>APP</option>
+                            <option>IAR</option>
+                            <option>MET</option>
+                        </select>
                     </div>
                     <div class="right_area_form">
                         <label for="proy">Proyecto:</label>
@@ -31,7 +43,7 @@
                 <label for="corr">Correo:</label>
                 <input type="text" id="corr" name="corr" required>
 
-                <button type="submit">Enviar</button>
+                <input type="button" id="submit" value="Guardar">
             </form>
         </div>
     </div>

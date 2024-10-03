@@ -1,7 +1,7 @@
 window.addEventListener("load", async() => {
     await initialLoad();
     await initialLoad_1();
-    await formulario();
+    // await formulario();
 });
 
 const initialLoad = async() => {
@@ -12,24 +12,41 @@ const initialLoad_1 = async() => {
     await propuestas_1();
 }
 
-const formulario = async() => {
-    await formulario_test();
-}
+// const formulario = async() => {
+//     await formulario_test();
+// }
 
-const formulario_test = async() => {
-    try {
-        const response = await fetch('/proposals')
-        const data = await response.json()
+// function getCSRFToken(){
+//     return document.querySelector('meta[name="csrf-token"]').getAttribute("content");
+// }
 
-        // Aqui va el código
+// const formulario_test = async() => {
+//     try {
+//         const response = await fetch('/proposals')
+//         const data = await response.json()
 
-        console.log(data.propuestas)
-        // Fin del código
+//         // Aqui va el código
 
-    } catch (error){
-        console.log(error)
-    }
-};
+//         var request = new XMLHttpRequest();
+//         var url = "submit";
+//         request.open("POST", url, true);
+//         var csrfToken = getCSRFToken();
+//         request.setRequestHeader("X-CSRTFToken", csrfToken);
+//         request.onreadystatechange = function(){
+//             if(request.readyState === 4 && request.status === 200){
+//                 var jsonData = JSON.parse(request.response);
+//                 console.log(jsonData);
+//             }
+//         }
+
+
+        
+//         // Fin del código
+
+//     } catch (error){
+//         console.log(error)
+//     }
+// };
 
 const propuestas_1 = async() => {
     try {
@@ -61,9 +78,9 @@ const propuestas_1 = async() => {
         for(var i=0; i < 17; i++){
             valores_rec.push(Object.values(valores[i]))
         }
-        console.log(valores_rec)
+        // console.log(valores_rec)
         
-        console.log(head)
+        // console.log(head)
         
 
         $("div#wrapper").Grid({

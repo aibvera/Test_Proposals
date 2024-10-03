@@ -5,14 +5,14 @@ from django.core.validators import EmailValidator
 
 class Propuesta(models.Model):
 
-    Id_Propuesta = models.CharField(max_length=10, primary_key=True)
+    Id_Propuesta = models.CharField(max_length=20, primary_key=True)
     AREAS = {
         'GR': 'Geología y Recursos Minerales',
         'MI': 'Minería'
     }
     Area = models.CharField(max_length=2, choices=AREAS)
     CATEGS = {
-        'SCR': 'Scipt',
+        'SCR': 'Script',
         'AUT': 'Automatización',
         'LIB': 'Librería',
         'APP': 'Aplicación interactiva',

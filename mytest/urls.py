@@ -21,8 +21,8 @@ from propuestas import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-    path('new/', views.new, name='new'),
-    path('edit/', views.edit, name='edit'),
     path('proposals/', views.get_proposals, name='proposals'),
-    path('submit/', views.submit, name='submit')
+    path('new/', views.new, name='new'),
+    path('new/submit', views.submit, name='submit'),
+    path('edit/', views.edit, name='edit'),
 ]

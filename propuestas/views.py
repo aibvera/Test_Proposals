@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Propuesta
 from django.http import JsonResponse
 import json
+import random
 from .models import Propuesta
 
 # Create your views here.
@@ -32,6 +33,7 @@ def submit(request):
         try:
             data = json.loads(request.body)
         except json.JSONDecodeError:
+            print('Json inv')
             return JsonResponse({'error': 'JSON inválido'}, status=400)
 
         # Extraer valores del json:
@@ -42,12 +44,18 @@ def submit(request):
         corr = data.get('Correo')
         desc = data.get('Descripcion')
 
+        # Crear Id:
+        id = area + '_' + cate + '_' + str(random.randint(1,999))
+
         # Verificar que los valores no sean None
         if not area or not cate or not proy or not enca or not corr or not desc:
+            print('campos')
             return JsonResponse({'error': 'Campos faltantes o incorrectos'}, status=400)
 
         # Añadir registro:
-        Propuesta.objects.create(Area=area, Categoria=cate, Proyecto=proy, Encargado=enca, Correo=corr, Descripcion=desc)
+        Propuesta.objects.create(Id_Propuesta=id, Area=area, Categoria=cate, Proyecto=proy, Encargado=enca, Correo=corr, Descripcion=desc)
+        print('TODO BN')
         return JsonResponse({'status': 'Succes'})
 
+    print('ERRORRRR')
     return JsonResponse({'status': 'Error'})
