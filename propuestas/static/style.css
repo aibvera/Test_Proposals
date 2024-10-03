@@ -205,6 +205,17 @@ tr:hover td{
     margin-right: 10px;
 }
 .boton-css{
-    padding-left: 100px;
-    border: red;
+    border: none;
+    background-color: #496573;
+    padding: 14px 28px;
+    cursor: pointer;
+    display: inline-block;   
+    color: white;
+    font-weight: bold;
+    margin: 10px;
+    border-radius: 10px;
+}
+.boton-css:hover{
+    background-color: black;
+    color: white;
 }
