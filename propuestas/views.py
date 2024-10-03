@@ -45,7 +45,7 @@ def submit(request):
         desc = data.get('Descripcion')
 
         # Crear Id:
-        id = area + '_' + cate + '_' + str(random.randint(1,999))
+        id = area + '_' + cate + '_' + str(random.randint(1,99))
 
         # Verificar que los valores no sean None
         if not area or not cate or not proy or not enca or not corr or not desc:
