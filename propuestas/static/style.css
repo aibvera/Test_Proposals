@@ -143,3 +143,33 @@ table tbody tr:nth-child(even){
 tr:hover td{
     background-color: rgb(236,236,236);
 }
+
+/* Registro de nueva propuesta */
+
+.up_form {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.left_area_form {
+    margin-left: 10px;
+    margin-right: 5px;
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.right_area_form {
+    margin-left: 5px;
+    margin-right: 10px;
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}

@@ -9,16 +9,28 @@
         </div>
         <div class="proposals_wrapper" id="proposals" style="overflow-x: auto;">
             <!-- Contenido -->
-            <form id="registroForm">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required><br><br>
-        
-                <label for="apellido">Apellido:</label>
-                <input type="text" id="apellido" name="apellido" required><br><br>
-        
-                <label for="dni">DNI:</label>
-                <input type="text" id="dni" name="dni" required><br><br>
-        
+            <form class="registroForm" id="registroForm">
+                <div class="up_form">
+                    <div class="left_area_form">
+                        <label for="area">Area</label>
+                        <select id="area" name="area" required></select>
+                        <label for="categ">Categoría:</label>
+                        <select id="categ" name="categ" required></select>
+                    </div>
+                    <div class="right_area_form">
+                        <label for="proy">Proyecto:</label>
+                        <input type="text" id="proy" name="proy" required>
+                        <label for="desc">Descripción:</label>
+                        <input type="text" id="desc" name="desc" required>
+                    </div>
+                </div>
+                
+                <label for="enca">Encargado:</label>
+                <input type="text" id="enca" name="enca" required>
+
+                <label for="corr">Correo:</label>
+                <input type="text" id="corr" name="corr" required>
+
                 <button type="submit">Enviar</button>
             </form>
         </div>

@@ -22,7 +22,8 @@ class Propuesta(models.Model):
     Categoria = models.CharField(max_length=3, choices=CATEGS)
     Proyecto = models.CharField(max_length=100)
     Encargado = models.CharField(max_length=100)
-    Correo = models.EmailField(max_length=20, default='NaN', validators=[EmailValidator(allowlist=['srk.com'])])
+    Correo = models.EmailField(max_length=20, default='-', validators=[EmailValidator(allowlist=['srk.com'])])
+    Descripcion = models.CharField(max_length=300, default='-')
 
 class Hora(models.Model):
 

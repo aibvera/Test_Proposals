@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .models import Propuesta
 from django.http import JsonResponse
+import json
+from .models import Propuesta
 
 # Create your views here.
 
@@ -11,7 +13,7 @@ def new(request):
 def edit(request):
     return render(request, 'edit.html', {})
 
-# Funciones de movimiento para json #
+# Funciones de enviado de jsons al cliente #
 
 def get_proposals(request):
     proposals = list(Propuesta.objects.values())
@@ -20,3 +22,32 @@ def get_proposals(request):
     else:
         data = {'message': 'Not Found'}
     return JsonResponse(data)
+
+# Funciones de recepción de jsons desde el cliente #
+
+def submit(request):
+    if request.method == 'POST':
+
+        # Leer el cuerpo de la solicitud como JSON:
+        try:
+            data = json.loads(request.body)
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'JSON inválido'}, status=400)
+
+        # Extraer valores del json:
+        area = data.get('Area')
+        cate = data.get('Categoria')
+        proy = data.get('Proyecto')
+        enca = data.get('Encargado')
+        corr = data.get('Correo')
+        desc = data.get('Descripcion')
+
+        # Verificar que los valores no sean None
+        if not area or not cate or not proy or not enca or not corr or not desc:
+            return JsonResponse({'error': 'Campos faltantes o incorrectos'}, status=400)
+
+        # Añadir registro:
+        Propuesta.objects.create(Area=area, Categoria=cate, Proyecto=proy, Encargado=enca, Correo=corr, Descripcion=desc)
+        return JsonResponse({'status': 'Succes'})
+
+    return JsonResponse({'status': 'Error'})
