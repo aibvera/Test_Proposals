@@ -232,7 +232,3 @@ tr:hover td{
     font-size: 15;
     font-family: "Outfit", sans-serif;
 }
-
-.textarea-css:focus {
-    outline: none; /* Eliminar el borde por defecto al hacer foco */
-}
