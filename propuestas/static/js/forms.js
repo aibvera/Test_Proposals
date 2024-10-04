@@ -4,14 +4,28 @@ window.addEventListener("load", async() => {
 
 const formulario = async() => {
     submit.addEventListener("click", (event) => {
-        formulario_test();
-    })
+        if (validarCampos()) {
+            formulario_test();
+        } else {
+            alert("Por favor, complete todos los campos.");
+        }
+    });
 
 }
 
 function getCSRFToken(){
     return document.querySelector('meta[name="csrf-token"]').getAttribute("content");
 }
+
+const validarCampos = () => {
+    // Verifica que todos los campos tengan valor
+    return area.value.trim() !== '' &&
+           categ.value.trim() !== '' &&
+           proy.value.trim() !== '' &&
+           desc.value.trim() !== '' &&
+           enca.value.trim() !== '' &&
+           corr.value.trim() !== '';
+};
 
 const formulario_test = async() => {
     try {
@@ -25,14 +39,24 @@ const formulario_test = async() => {
         request.open("POST", url, true);
         var csrfToken = getCSRFToken();
         request.setRequestHeader("X-CSRFToken", csrfToken);
-        console.log(csrfToken)
+        
         request.onreadystatechange = function(){
-            
-            if(request.readyState === 4 && request.status === 200){
-                var jsonData = JSON.parse(request.response);
-                console.log(jsonData);
-            }else{
-                console.log("Solicitud fallida");
+            if(request.readyState === 4){
+                if(request.status === 200){
+                    var jsonData = JSON.parse(request.response);
+                    console.log(jsonData);
+
+                    // Limpiar los campos del formulario
+                    area.value = '';
+                    categ.value = '';
+                    proy.value = '';
+                    desc.value = '';
+                    enca.value = '';
+                    corr.value = '';
+
+                }else{
+                    console.log('Solicitud fallida!')
+                }
             }
         };
 
@@ -53,10 +77,9 @@ const formulario_test = async() => {
         });
 
         request.send(data1)
-
-        
+        console.log(data.propuestas[0])
         console.log(data1)
-        
+         
         // Fin del código
 
     } catch (error){

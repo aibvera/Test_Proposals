@@ -199,11 +199,36 @@ tr:hover td{
     width: 100%;
     border: 1px solid #aaa;
     border-radius: 7px;
+    font-size: 14;
 }
 .input-desc{
     margin-left: 10px;
     margin-right: 10px;
 }
 .boton-css{
-    padding-left: 100px;
+    border: none;
+    background-color: #496573;
+    padding: 14px 28px;
+    cursor: pointer;
+    display: inline-block;   
+    color: white;
+    font-weight: bold;
+    margin: 10px;
+    border-radius: 10px;
+}
+.boton-css:hover{
+    background-color: black;
+    color: white;
+}
+.textarea-css {
+    width: 100%;
+    min-height: 50px;
+    padding: 5px;
+    border: 1px solid #aaa;
+    border-radius: 7px;
+    box-sizing: border-box; /* Incluir el padding en el tamaño total */
+    resize: none; /* Evitar que el usuario cambie el tamaño manualmente */
+    /*overflow: hidden; /* Ocultar barras de desplazamiento */
+    font-size: 15;
+    font-family: "Outfit", sans-serif;
 }

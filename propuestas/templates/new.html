@@ -14,12 +14,12 @@
             <form class="registroForm" id="registroForm" action="." method="POST">{% csrf_token %}
                 <div class="up_form">
                     <div class="left_area_form">
-                        <label for="area">Area</label>
+                        <label for="area"><b>Area</b></label>
                         <select class="select-css" id="area" name="area" required>
                             <option>GR</option>
                             <option>MI</option>
                         </select>
-                        <label for="categ">Categoría</label>
+                        <label for="categ"><b>Categoría</b></label>
                         <select class="select-css" id="categ" name="categ" required>
                             <option>SCR</option>
                             <option>AUT</option>
@@ -30,23 +30,24 @@
                         </select>
                     </div>
                     <div class="right_area_form">
-                        <label for="proy">Nombre del Proyecto</label>
+                        <label for="proy"><b>Nombre del Proyecto</b></label>
                         <input class="input-css" type="text" id="proy" name="proy" required>
                         <div class="bottom_form">
                             <div class="input-enca">
-                                <label for="enca">Encargado</label>
+                                <label for="enca"><b>Encargado</b></label>
                                 <input class="input-css" type="text" id="enca" name="enca" required>
                             </div>
                             <div class="input-corr">
-                                <label for="corr">Correo</label>
+                                <label for="corr"><b>Correo</b></label>
                                 <input class="input-css" type="text" id="corr" name="corr" required>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="input-desc">
-                    <label for="desc">Descripción:</label>
-                    <input class="input-css" type="text" id="desc" name="desc" required>
+                    <label for="desc"><b>Descripción</b></label>
+                    <!--<input class="input-css" type="text" id="desc" name="desc" required>-->
+                    <textarea class="textarea-css" name="desc" id="desc"></textarea>
                 </div>
                 
                 <input class="boton-css" type="button" id="submit" value="Guardar">
