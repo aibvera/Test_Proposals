@@ -3,6 +3,13 @@ window.addEventListener("load", async() => {
 });
 
 const formulario = async() => {
+    const textarea = document.getElementById('desc');
+
+    textarea.addEventListener('input', function() {
+    this.style.height = 'auto'; // Resetea la altura
+    this.style.height = (this.scrollHeight) + 'px'; // Ajusta según el contenido
+    });
+
     submit.addEventListener("click", (event) => {
         if (validarCampos()) {
             formulario_test();
@@ -20,11 +27,11 @@ function getCSRFToken(){
 const validarCampos = () => {
     // Verifica que todos los campos tengan valor
     return area.value.trim() !== '' &&
-           categ.value.trim() !== '' &&
-           proy.value.trim() !== '' &&
-           desc.value.trim() !== '' &&
-           enca.value.trim() !== '' &&
-           corr.value.trim() !== '';
+        categ.value.trim() !== '' &&
+        proy.value.trim() !== '' &&
+        desc.value.trim() !== '' &&
+        enca.value.trim() !== '' &&
+        corr.value.trim() !== '';
 };
 
 const formulario_test = async() => {
@@ -79,7 +86,7 @@ const formulario_test = async() => {
         request.send(data1)
         console.log(data.propuestas[0])
         console.log(data1)
-         
+
         // Fin del código
 
     } catch (error){
