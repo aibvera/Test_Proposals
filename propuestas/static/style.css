@@ -178,11 +178,11 @@ tr:hover td{
     display: flex;
 }
 .input-enca{
-    width: 60%;
+    width: 50%;
     margin-right: 10px;
 }
 .input-corr{
-    width: 40%;
+    width: 50%;
 }
 .select-css{
     color: #444;
@@ -228,7 +228,7 @@ tr:hover td{
     border-radius: 7px;
     box-sizing: border-box; /* Incluir el padding en el tamaño total */
     resize: none; /* Evitar que el usuario cambie el tamaño manualmente */
-    /*overflow: hidden; /* Ocultar barras de desplazamiento */
+    overflow: hidden; /* Ocultar barras de desplazamiento */
     font-size: 15;
     font-family: "Outfit", sans-serif;
 }
