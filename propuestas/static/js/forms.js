@@ -3,21 +3,34 @@ window.addEventListener("load", async() => {
 });
 
 const formulario = async() => {
-    const textarea = document.getElementById('desc');
+    // Funcion para que la caja de descripción sea dinamica de acuerdo a la cantidad de texto introducido
+    descripcion_dinamic();
 
-    textarea.addEventListener('input', function() {
-    this.style.height = 'auto'; // Resetea la altura
-    this.style.height = (this.scrollHeight) + 'px'; // Ajusta según el contenido
-    });
+    // Opciones que se envían al HTML
+    options_area();
+    options_categoria();
 
+    // Validación para enviar una registro nuevo
+    // submit.addEventListener("click", (event) => {
+    //     if (validarCampos()) {
+    //         formulario_test();
+    //     } else {
+    //         alert("Por favor, complete todos los campos.");
+    //     }
+    // });
     submit.addEventListener("click", (event) => {
         if (validarCampos()) {
-            formulario_test();
+            const confirmacion = confirm('¿Estás seguro de que deseas enviar el formulario?');
+            if (confirmacion) {
+                formulario_test();
+            }
+            if (!confirmacion) {
+                event.preventDefault();
+            }
         } else {
             alert("Por favor, complete todos los campos.");
         }
-    });
-
+    })
 }
 
 function getCSRFToken(){
@@ -38,8 +51,6 @@ const formulario_test = async() => {
     try {
         const response = await fetch('/proposals')
         const data = await response.json()
-
-        // Aqui va el código
 
         var request = new XMLHttpRequest();
         var url = "submit";
@@ -87,9 +98,56 @@ const formulario_test = async() => {
         console.log(data.propuestas[0])
         console.log(data1)
 
-        // Fin del código
-
     } catch (error){
         console.log(error)
     }
 };
+
+const descripcion_dinamic = async() => {
+    try{
+        const textarea = document.getElementById('desc');
+
+        textarea.addEventListener('input', function() {
+            this.style.height = 'auto'; // Resetea la altura
+            this.style.height = (this.scrollHeight) + 'px'; // Ajusta según el contenido
+        });
+    } catch(error){
+        console.log(error)
+    }
+}
+
+const options_area = async() => {
+    try{
+        const response = await fetch('../areachoices/');
+        const data_area = await response.json();
+        const selectArea = document.getElementById('area');
+        
+        cantidad = Object.values(data_area).length;
+        for(var i=0; i<cantidad; i++){
+            const option = document.createElement('option');
+            option.value = data_area.opciones[i][0];
+            option.textContent = data_area.opciones[i][1];
+            selectArea.appendChild(option);
+        };
+    } catch(error){
+        console.log(error)
+    }
+}
+
+const options_categoria = async() => {
+    try{
+        const response = await fetch('../catechoices/');
+        const data_cate = await response.json();
+        const selectCate = document.getElementById('categ');
+
+        cantidad = Object.values(data_cate.opciones).length;
+        for(var i=0; i<cantidad; i++){
+            const option = document.createElement('option');
+            option.value = data_cate.opciones[i][0];
+            option.textContent = data_cate.opciones[i][1];
+            selectCate.appendChild(option);
+        }
+    } catch(error){
+        console.log(error)
+    }
+}
