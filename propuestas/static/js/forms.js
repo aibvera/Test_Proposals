@@ -11,13 +11,26 @@ const formulario = async() => {
     options_categoria();
 
     // Validación para enviar una registro nuevo
+    // submit.addEventListener("click", (event) => {
+    //     if (validarCampos()) {
+    //         formulario_test();
+    //     } else {
+    //         alert("Por favor, complete todos los campos.");
+    //     }
+    // });
     submit.addEventListener("click", (event) => {
         if (validarCampos()) {
-            formulario_test();
+            const confirmacion = confirm('¿Estás seguro de que deseas enviar el formulario?');
+            if (confirmacion) {
+                formulario_test();
+            }
+            if (!confirmacion) {
+                event.preventDefault();
+            }
         } else {
             alert("Por favor, complete todos los campos.");
         }
-    });
+    })
 }
 
 function getCSRFToken(){
