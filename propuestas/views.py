@@ -17,9 +17,19 @@ def edit(request):
 # Funciones de enviado de jsons al cliente #
 
 def get_proposals(request):
-    proposals = list(Propuesta.objects.values())
-    if len(proposals) > 0:
-        data = {'message': 'Success', 'propuestas': proposals}
+    proposals = Propuesta.objects.all()
+    proposal_list = []
+    for prop in proposals:
+        proposal = {}
+        proposal['Area'] = prop.get_Area_display()
+        proposal['Categoría'] = prop.get_Categoria_display()
+        proposal['Proyecto'] = prop.Proyecto
+        proposal['Encargado'] = prop.Encargado
+        proposal['Correo'] = prop.Correo
+        proposal['Descripción'] = prop.Descripcion
+        proposal_list.append(proposal)
+    if len(proposal_list) > 0:
+        data = {'message': 'Success', 'propuestas': proposal_list}
     else:
         data = {'message': 'Not Found'}
     return JsonResponse(data)
