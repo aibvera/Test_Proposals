@@ -27,4 +27,5 @@ urlpatterns = [
     path('new/', views.new, name='new'),
     path('new/submit', views.submit, name='submit'),
     path('edit/', views.edit, name='edit'),
+    path('edit/update', views.edit, name='update'),
 ]

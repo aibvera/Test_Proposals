@@ -21,6 +21,7 @@ def get_proposals(request):
     proposal_list = []
     for prop in proposals:
         proposal = {}
+        proposal['Id_Propuesta'] = prop.Id_Propuesta
         proposal['Area'] = prop.get_Area_display()
         proposal['Categoría'] = prop.get_Categoria_display()
         proposal['Proyecto'] = prop.Proyecto
@@ -69,9 +70,6 @@ def submit(request):
         corr = data.get('Correo')
         desc = data.get('Descripcion')
 
-        # Crear Id:
-        #id = area + '_' + cate + '_' + str(random.randint(1,999))
-
         # Verificar que los valores no sean None
         if not area or not cate or not proy or not enca or not corr or not desc:
             return JsonResponse({'error': 'Campos faltantes o incorrectos'}, status=400)
@@ -79,5 +77,40 @@ def submit(request):
         # Añadir registro:
         propuesta = Propuesta.objects.create(Area=area, Categoria=cate, Proyecto=proy, Encargado=enca, Correo=corr, Descripcion=desc)
         return JsonResponse({'status': 'Succes', 'Id_Propuesta':propuesta.Id_Propuesta})
+
+    return JsonResponse({'status': 'Error'})
+
+def update(request):
+    if request.method == 'POST':
+
+        # Leer el cuerpo de la solicitud como JSON:
+        try:
+            data = json.loads(request.body)
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'JSON inválido'}, status=400)
+
+        # Extraer valores del json:
+        id = data.get('Id_Propuesta')
+        area = data.get('Area')
+        cate = data.get('Categoria')
+        proy = data.get('Proyecto')
+        enca = data.get('Encargado')
+        corr = data.get('Correo')
+        desc = data.get('Descripcion')
+
+        # Verificar que los valores no sean None
+        if not area or not cate or not proy or not enca or not corr or not desc:
+            return JsonResponse({'error': 'Campos faltantes o incorrectos'}, status=400)
+        
+        # Editar registro:
+        proposal = Propuesta.objects.get(Id_Propuesta=id)
+        proposal.Area = area
+        proposal.Categoria = cate
+        proposal.Proyecto = proy
+        proposal.Encargado = enca
+        proposal.Correo = corr
+        proposal.Descripcion = desc
+        proposal.save()
+        return JsonResponse({'status': 'Succes', 'Id_Propuesta':proposal.Id_Propuesta})
 
     return JsonResponse({'status': 'Error'})
